@@ -25,9 +25,10 @@ class TestState(unittest.TestCase):
         """teardown"""
         try:
             os.remove("file.json")
-        except:
+        except Exception:  # pylint: disable=broad-except
             pass
 
+    # pylint: disable=invalid-name
     def test_pep8_stat(self):
         """checks for pep8"""
         style = pep8.StyleGuide(quiet=True)

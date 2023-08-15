@@ -27,7 +27,7 @@ class TestReview(unittest.TestCase):
         """teardown"""
         try:
             os.remove("file.json")
-        except:
+        except Exception:  # pylint: disable=broad-except
             pass
 
     def test_pep8_review(self):

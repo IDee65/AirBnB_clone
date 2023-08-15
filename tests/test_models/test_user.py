@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 """Tests city"""
 import unittest
-import pep8
 import os
+import pep8
 from models.user import User
 from models.base_model import BaseModel
 
@@ -11,7 +11,7 @@ class TestCity(unittest.TestCase):
     """unittests for basemodel"""
 
     @classmethod
-    def setUp(cls):
+    def setUp(cls):  # pylint: disable=arguments-differ
         """creates class"""
         cls.testUser = User()
         cls.testUser.email = "email"
@@ -20,7 +20,7 @@ class TestCity(unittest.TestCase):
         cls.testUser.last_name = "last"
 
     @classmethod
-    def tearDown(cls):
+    def tearDown(cls):  # pylint: disable=arguments-differ
         """deletes test class"""
         del cls.testUser
         try:
@@ -28,6 +28,7 @@ class TestCity(unittest.TestCase):
         except FileNotFoundError:
             pass
 
+    # pylint: disable=invalid-name
     def test_pep8(self):
         """tests pep8"""
         style = pep8.StyleGuide(quiet=True)
@@ -53,16 +54,22 @@ class TestCity(unittest.TestCase):
         self.assertTrue('last_name' in self.testUser.__dict__)
 
     def test_save(self):
+        """test_save
+        """
         self.testUser.save()
         self.assertTrue(self.testUser.updated_at != self.testUser.created_at)
 
     def test_strings(self):
+        """test_strings
+        """
         self.assertEqual(type(self.testUser.email), str)
         self.assertEqual(type(self.testUser.password), str)
         self.assertEqual(type(self.testUser.first_name), str)
         self.assertEqual(type(self.testUser.first_name), str)
 
     def test_to_dict(self):
+        """test_to_dict
+        """
         self.assertEqual('to_dict' in dir(self.testUser), True)
 
 

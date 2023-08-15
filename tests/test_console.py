@@ -3,11 +3,12 @@
 import unittest
 from io import StringIO
 from unittest.mock import patch
-import pep8
 import os
+import pep8
 import console
-import tests
 from console import HBNBCommand
+
+# pylint: disable=invalid-name
 
 
 class TestConsole(unittest.TestCase):
@@ -27,7 +28,7 @@ class TestConsole(unittest.TestCase):
         """delete file"""
         try:
             os.remove("file.json")
-        except Exception:
+        except Exception:  # pylint: disable=broad-except
             pass
 
     def test_pep8_console(self):

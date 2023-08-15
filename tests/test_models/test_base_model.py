@@ -23,7 +23,7 @@ class TestBaseModel(unittest.TestCase):
         del cls.testBase
         try:
             os.remove("file.json")
-        except:
+        except Exception:  # pylint: disable=broad-except
             pass
 
     def test_pep8_basemodel(self):
@@ -35,23 +35,33 @@ class TestBaseModel(unittest.TestCase):
         self.assertEqual(p.total_errors, 0, "fix pep8")
 
     def test_check_functions(self):
+        """test check functions
+        """
         self.assertIsNotNone(BaseModel.__doc__)
         self.assertIsNotNone(BaseModel.save.__doc__)
         self.assertIsNotNone(BaseModel.to_dict.__doc__)
 
     def test_attribute_basemodel(self):
+        """test attributes of basemodel
+        """
         self.assertTrue(hasattr(BaseModel, "__init__"))
         self.assertTrue(hasattr(BaseModel, "save"))
         self.assertTrue(hasattr(BaseModel, "to_dict"))
 
     def test_init(self):
+        """test init
+        """
         self.assertTrue(isinstance(self.testBase, BaseModel))
 
     def test_save(self):
+        """test save
+        """
         self.testBase.save()
         self.assertNotEqual(self.testBase.created_at, self.testBase.updated_at)
 
     def test_to_dict(self):
+        """test to dict
+        """
         copy = self.testBase.to_dict()
         self.assertEqual(self.testBase.__class__.__name__, 'BaseModel')
         self.assertIsInstance(copy['created_at'], str)

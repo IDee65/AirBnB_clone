@@ -7,24 +7,24 @@ import models
 
 class BaseModel:
     """basemodel class"""
-    def __init__(self, *args, **kwargs):
+
+    def __init__(self, *_, **kwargs):
         """initializes class"""
         if kwargs:
             for key, value in kwargs.items():
-                if key == 'created_at' or key == 'updated_at':
+                if key in ['created_at', 'updated_at']:
                     value = datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f")
                 if key != '__class__':
                     setattr(self, key, value)
         else:
-            self.id = str(uuid.uuid4())
+            self.id = str(uuid.uuid4())  # pylint: disable=invalid-name
             self.created_at = datetime.now()
             self.updated_at = self.created_at
             models.storage.new(self)
 
     def __str__(self):
         """string representation of base model"""
-        return "[{}] ({}) {}".format(
-            type(self).__name__, self.id, self.__dict__)
+        return f"[{type(self).__name__}] ({self.id}) {self.__dict__}"
 
     def __repr__(self):
         """returns string function"""

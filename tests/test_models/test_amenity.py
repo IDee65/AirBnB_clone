@@ -25,31 +25,31 @@ class TestAmenity(unittest.TestCase):
         """teardown"""
         try:
             os.remove("file.json")
-        except:
+        except Exception:  # pylint: disable=broad-except
             pass
 
-    def test_pep8_Amen(self):
+    def test_pep8_Amen(self):  # pylint: disable=invalid-name
         """Tests pep8"""
         style = pep8.StyleGuide(quiet=True)
         p = style.check_files(['models/amenity.py'])
         self.assertEqual(p.total_errors, 0, "fix pep8")
 
-    def test_docstring_Amen(self):
+    def test_docstring_Amen(self):  # pylint: disable=invalid-name
         """test for docstrings"""
         self.assertIsNotNone(self.lord.__doc__)
 
-    def test_attr_Amen(self):
+    def test_attr_Amen(self):  # pylint: disable=invalid-name
         """chekcing if amenity have attibutes"""
         self.assertTrue('id' in self.lord.__dict__)
         self.assertTrue('created_at' in self.lord.__dict__)
         self.assertTrue('updated_at' in self.lord.__dict__)
         self.assertTrue('name' in self.lord.__dict__)
 
-    def test_inheritance_Amen(self):
+    def test_inheritance_Amen(self):  # pylint: disable=invalid-name
         """test if inheritance works"""
         self.assertTrue(issubclass(self.lord.__class__, BaseModel), True)
 
-    def test_attrtype_Amen(self):
+    def test_attrtype_Amen(self):  # pylint: disable=invalid-name
         """test attr types in instance"""
         self.assertEqual(type(self.lord.name), str)
 

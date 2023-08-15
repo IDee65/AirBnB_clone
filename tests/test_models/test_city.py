@@ -11,14 +11,14 @@ class TestCity(unittest.TestCase):
     """unittests for basemodel"""
 
     @classmethod
-    def setUp(cls):
+    def setUp(cls):  # pylint: disable=arguments-differ
         """creates class"""
         cls.testCity = City()
         cls.testCity.name = "test"
         cls.testCity.state_id = "T"
 
     @classmethod
-    def tearDown(cls):
+    def tearDown(cls):  # pylint: disable=arguments-differ
         """deletes test class"""
         del cls.testCity
         try:
@@ -49,6 +49,8 @@ class TestCity(unittest.TestCase):
         self.assertIsNotNone(self.testCity.created_at)
 
     def test_save_city(self):
+        """test save city
+        """
         self.testCity.save()
         self.assertTrue(self.testCity.updated_at != self.testCity.created_at)
 

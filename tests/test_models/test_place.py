@@ -46,9 +46,13 @@ class TestPlace(unittest.TestCase):
             self.assertTrue(len(func.__doc__) > 0)
 
     def test_subclass(self):
+        """tests subclass
+        """
         self.assertTrue(issubclass(self.testPlace.__class__, BaseModel), True)
 
     def test_attributes_and_init(self):
+        """tests attributes and init
+        """
         self.assertTrue(isinstance(self.testPlace, Place))
         self.assertTrue('id' in self.testPlace.__dict__)
         self.assertTrue('created_at' in self.testPlace.__dict__)
@@ -66,6 +70,8 @@ class TestPlace(unittest.TestCase):
         self.assertTrue('amenity_ids' in self.testPlace.__dict__)
 
     def test_has_strings(self):
+        """test for strings
+        """
         self.assertEqual(type(self.testPlace.city_id), str)
         self.assertEqual(type(self.testPlace.user_id), str)
         self.assertEqual(type(self.testPlace.name), str)
@@ -79,11 +85,15 @@ class TestPlace(unittest.TestCase):
         self.assertEqual(type(self.testPlace.amenity_ids), list)
 
     def test_save(self):
+        """test save
+        """
         self.testPlace.save()
         self.assertNotEqual(self.testPlace.created_at,
                             self.testPlace.updated_at)
 
     def test_dict(self):
+        """test dict
+        """
         self.assertEqual('to_dict' in dir(self.testPlace), True)
 
 
