@@ -1,0 +1,56 @@
+.filters {
+    background-color: rgb(255, 255, 255);
+    height: 70px;
+    width: 100%;
+    border: 1px solid #DDDDDD;
+    border-radius: 4px;
+    text-align: right;
+    /* display: flex; */
+    /* align-items: center; */
+    /* justify-content: flex-end; */
+}
+
+.filters button {
+    font-size: 18px;
+    color: white;
+    margin-top: 11px;
+    margin-bottom: 11px;
+    background-color: #ff5a5f;
+    height: 48px;
+    border: 0px;
+    border-radius: 4px;
+    width: 20%;
+    margin-right: 30px;
+    opacity: 1;
+}
+
+section.filters button:hover {
+    opacity: 0.9;
+}
+
+.locations, .amenities {
+    text-align: left;
+    height: 100%;
+    width: 25%;
+    margin-left: 30px;
+    float: left;
+}
+
+.locations {
+    border-right: 1px solid #DDDDDD;
+}
+
+h3, h4 {
+    margin: 0px;
+    padding: 0px;
+
+}
+
+h3 {
+    margin-top: 17px;
+    font-weight: 600;
+}
+h4 {
+    font-weight: 400;
+    font-size: 14px;
+}
